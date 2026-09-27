@@ -14,8 +14,6 @@ Modern electronics manufacturing requires microscopic precision, traditionally r
 - **Sensory Node (ESP32 WROOM + OV7670):** The microcontroller acts purely as a high-speed data acquisition conduit. To prevent power brownouts and fatal memory crashes during electronic shutter actuation, the Wi-Fi and Bluetooth radios are permanently disabled via firmware (`WiFi.mode(WIFI_OFF)`). Raw, uncompressed YUV422 image bytes (QQVGA) are transmitted over a heavily synchronized 115200-baud USB tether to the processing node.
 - **Edge Processing Node:** A localized Python pipeline reconstructs the 1D bytearray into a 3D image matrix, applies a 3x3 Median Blur to eradicate environmental Moiré distortion, and interfaces directly with the PyTorch OpenCLIP engine for analysis.
 
-![Hardware Setup](docs/images/ESP32_OV7670_Hardware_Setup.jpg)
-
 ---
 
 ## AI Inference Pipeline
