@@ -14,6 +14,7 @@ Modern electronics manufacturing requires microscopic precision, traditionally r
 - **Sensory Node (ESP32 WROOM + OV7670):** The microcontroller acts purely as a high-speed data acquisition conduit. To prevent power brownouts and fatal memory crashes during electronic shutter actuation, the Wi-Fi and Bluetooth radios are permanently disabled via firmware (`WiFi.mode(WIFI_OFF)`). Raw, uncompressed YUV422 image bytes (QQVGA) are transmitted over a heavily synchronized 115200-baud USB tether to the processing node.
 - **Edge Processing Node:** A localized Python pipeline reconstructs the 1D bytearray into a 3D image matrix, applies a 3x3 Median Blur to eradicate environmental Moiré distortion, and interfaces directly with the PyTorch OpenCLIP engine for analysis.
 
+
 ---
 
 ## AI Inference Pipeline
@@ -46,6 +47,38 @@ The OV7670 CMOS camera communicates with the ESP32 via an I2C-compatible SCCB in
 | **PCLK / XCLK** | GPIO 22 / 21 | Pixel Clock / 20MHz System Clock |
 | **D7 - D0** | 35, 34, 32, 33, 19, 18, 5, 4 | 8-Bit Parallel Image Data Bus |
 | **Buzzer** | GPIO 14 | Auditory Diagnostic Feedback |
+
+---
+
+## Project Structure
+
+```
+edge-ai-based-pcb-verification-using-openclip/
+├── docs/
+│   ├── diagrams/
+│   │   ├── AI_Software_Pipeline_Flowchart.jpg
+│   │   ├── Overall_System_Block_Diagram.jpg
+│   │   └── Standard_Industrial_AOI_Workflow.png
+│   ├── images/
+│   │   ├── Defective Image_1.png
+│   │   ├── Defective Image_2.png
+│   │   ├── Defective Image_3.png
+│   │   ├── Defective Image_4.png
+│   │   ├── ESP32_OV7670_Hardware_Setup.jpg
+│   │   └── Golden_Reference.png
+│   ├── terminal_outputs/
+│   |   ├── Output_FAIL_Text_Diagnosis.png
+│   |   └── Output_PASS.png
+|   └── Edge_AI_Based_PCB_AOI_Report.pdf
+├── hardware/
+│   └── ESP32_Camera_Capture/
+│       └── ESP32_Camera_Capture.ino
+├── software/
+│   └── OpenCLIP_Inference_Pipeline.py
+├── .gitignore
+├── LICENSE
+└── README.md
+```
 
 ---
 
