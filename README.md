@@ -64,7 +64,7 @@ edge-ai-based-pcb-verification-using-openclip/
 │   │   ├── Defective Image_2.png
 │   │   ├── Defective Image_3.png
 │   │   ├── Defective Image_4.png
-│   │   ├── ESP32_OV7670_Hardware_Setup.jpg
+│   │   ├── Hardware_Model.jpg
 │   │   └── Golden_Reference.png
 │   ├── terminal_outputs/
 │   |   ├── Output_FAIL_Text_Diagnosis.png
